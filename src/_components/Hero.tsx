@@ -40,7 +40,7 @@ function Hero() {
                     waveAmplitude={1}
                     particleSize={1.5}
                     lerpSpeed={0.05}
-                    color="#5227FF" // Purple tone
+                    color="#5227FF"
                     autoAnimate
                     particleVariance={1}
                     rotationSpeed={0}
@@ -51,7 +51,6 @@ function Hero() {
                 />
             </div>
 
-            {/* --- REFINED GLOWS (Subtle & Deep) --- */}
             <div className="absolute inset-0 -z-10">
                 <div className="absolute top-[-10%] left-[-10%] h-[600px] w-[600px] rounded-full bg-[rgba(82,39,255,0.08)] blur-[120px]"></div>
                 <div className="absolute bottom-[-10%] right-[-10%] h-[600px] w-[600px] rounded-full bg-[rgba(100,200,250,0.05)] blur-[120px]"></div>
@@ -74,7 +73,7 @@ function Hero() {
                 </p>
             </motion.div>
 
-            {/* Main Input Box (Ultra Dark Glassmorphism) */}
+            {/* Main Input Box */}
             <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -117,7 +116,7 @@ function Hero() {
                 </div>
             </motion.div>
 
-            {/* Suggestions Chips (More Minimal) */}
+            {/* Suggestions Chips */}
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}

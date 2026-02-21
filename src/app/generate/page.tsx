@@ -29,7 +29,6 @@ function GenerateContent() {
                 });
                 const data = await response.json();
 
-                // Backend logic consistency check
                 const content = data.content || data.slides || data;
                 if (Array.isArray(content)) {
                     setSlides(content);
@@ -67,12 +66,9 @@ function GenerateContent() {
         }
     }, [currentSlide, slides.length]);
 
-    // --- HELPER FUNCTION TO RENDER CONTENT SAFELY ---
     const renderContent = (content: any) => {
         if (!content) return "";
-        // Agar content simple string hai
         if (typeof content === 'string') return content;
-        // Agar content object hai toh uska 'text' key uthao
         if (typeof content === 'object') {
             return content.text || content.description || JSON.stringify(content);
         }
@@ -87,7 +83,7 @@ function GenerateContent() {
                     transition={{ repeat: Infinity, duration: 2 }}
                     className="text-sm font-black tracking-[0.4em] text-blue-500 uppercase"
                 >
-                    Generating Cinematic Experience...
+                    Generating Content...
                 </motion.div>
             </div>
         );
@@ -140,11 +136,9 @@ function GenerateContent() {
                         {slides[currentSlide]?.title}
                     </h2>
 
-                    {/* FIXED RENDER LOGIC HERE */}
                     <div className="text-lg md:text-3xl text-zinc-400 font-medium max-w-4xl leading-relaxed">
                         <p>{renderContent(slides[currentSlide]?.content)}</p>
 
-                        {/* Agar object mein bullet points hain toh wo bhi render ho jayenge */}
                         {slides[currentSlide]?.content?.bulletPoints && (
                             <ul className="mt-8 space-y-4 text-left inline-block">
                                 {slides[currentSlide].content.bulletPoints.map((point: string, idx: number) => (

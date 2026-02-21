@@ -42,16 +42,17 @@ function Header() {
                 </nav>
 
                 {/* Auth & Dashboard */}
-                <div className='flex items-center gap-4 relative z-10'>
+                <div className='flex items-center gap-2 md:gap-4 relative z-10'>
                     {user ? (
-                        <div className='flex items-center gap-3'>
+                        <div className='flex items-center gap-2 md:gap-3'>
                             <Link href={"/dashboard"}>
                                 <Button
                                     variant="outline"
-                                    className="sm:flex gap-2 items-center rounded-xl border-white/10 bg-white/5 hover:border-primary text-[10px] font-black uppercase tracking-widest h-9 transition-all duration-300 text-white"
+                                    className="flex gap-2 items-center rounded-xl border-white/10 bg-white/5 hover:border-primary text-[9px] md:text-[10px] font-black uppercase tracking-widest h-9 px-3 md:px-4 transition-all duration-300 text-white"
                                 >
                                     <LayoutDashboard size={14} />
-                                    Dashboard
+                                    <span className="hidden xs:block">Dashboard</span>
+                                    <span className="xs:hidden">Dash</span>
                                 </Button>
                             </Link>
 
@@ -61,10 +62,10 @@ function Header() {
                         </div>
                     ) : (
                         <SignInButton mode='modal'>
-                            <button className='relative inline-flex h-10 overflow-hidden rounded-xl p-[1px] focus:outline-none'>
+                            <button className='relative inline-flex h-9 md:h-10 overflow-hidden rounded-xl p-[1px] focus:outline-none'>
                                 <span className='absolute inset-[-1000%] animate-[spin_3s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2E8F0_0%,#5227FF_50%,#E2E8F0_100%)]' />
-                                <span className='inline-flex h-full w-full cursor-pointer items-center justify-center rounded-xl bg-black px-6 py-1 text-[10px] font-black uppercase tracking-widest text-white backdrop-blur-3xl hover:bg-zinc-900 transition-all'>
-                                    Get Started
+                                <span className='inline-flex h-full w-full cursor-pointer items-center justify-center rounded-xl bg-black px-4 md:px-6 py-1 text-[9px] md:text-[10px] font-black uppercase tracking-widest text-white backdrop-blur-3xl hover:bg-zinc-900 transition-all'>
+                                    Join
                                 </span>
                             </button>
                         </SignInButton>

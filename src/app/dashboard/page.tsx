@@ -12,7 +12,7 @@ function Dashboard() {
     const [courseList, setCourseList] = useState<any[]>([]);
     const [loading, setLoading] = useState(true);
     const [deletingId, setDeletingId] = useState<string | null>(null);
-    const hasFetched = useRef(false); // Double fetch rokne ke liye
+    const hasFetched = useRef(false);
     const router = useRouter();
 
     const getUserCourses = useCallback(async () => {
@@ -29,10 +29,10 @@ function Dashboard() {
         }
     }, [user]);
 
-    // Delete Logic (Ensure API Route handles DELETE)
+    // Delete Logic 
     const deleteCourse = async (courseId: string, e: React.MouseEvent) => {
         e.stopPropagation();
-        if (!confirm("Pakka uda du?")) return;
+        if (!confirm("This course will be deleted permanently. Do you really want to delete it?")) return;
 
         setDeletingId(courseId);
         try {
@@ -41,10 +41,9 @@ function Dashboard() {
             });
 
             if (response.ok) {
-                // UI se turant hatao
                 setCourseList((prev) => prev.filter(c => (c.courseId || c.id) !== courseId));
             } else {
-                alert("Delete fail ho gaya bhai!");
+                alert("Deletion failed.Some error occured.Please try again.");
             }
         } catch (error) {
             console.error(error);
@@ -56,7 +55,7 @@ function Dashboard() {
     useEffect(() => {
         if (user && !hasFetched.current) {
             getUserCourses();
-            hasFetched.current = true; // Ek baar fetch ho gaya toh bas
+            hasFetched.current = true;
         }
     }, [user, getUserCourses]);
 

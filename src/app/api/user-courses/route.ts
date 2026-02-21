@@ -5,7 +5,7 @@ import { currentUser } from "@clerk/nextjs/server";
 import { v4 as uuidv4 } from "uuid";
 import { and, eq, desc } from "drizzle-orm";
 
-// 1. GET: Saare courses fetch karne ke liye
+// 1. GET: 
 export async function GET() {
     try {
         const user = await currentUser();
@@ -22,7 +22,7 @@ export async function GET() {
     }
 }
 
-// 2. POST: Naya course banane ke liye (With Duplicate Check)
+// 2. POST:
 export async function POST(req: Request) {
     try {
         const { prompt, type } = await req.json();
@@ -40,7 +40,7 @@ export async function POST(req: Request) {
             return NextResponse.json(existingCourse[0]);
         }
 
-        // AI Call (Groq)
+        // AI Call 
         const slideCount = type === "long" ? 10 : 5;
         const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
             method: "POST",
@@ -75,7 +75,7 @@ export async function POST(req: Request) {
     }
 }
 
-// 3. DELETE: Course udane ke liye
+// 3. DELETE:
 export async function DELETE(req: Request) {
     try {
         const { searchParams } = new URL(req.url);
